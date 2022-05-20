@@ -4,13 +4,13 @@
       <div class="flex space-x-12">
         <router-link to="/" class="flex items-center">
           <img
-            src="@/assets/logo.svg"
+            src="@/assets/logo.png"
             class="mr-3 h-6 w-full sm:h-9"
             alt="Vue logo"
           />
           <span
-            class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
-            >Aniditt</span
+            class="self-center text-xl font-semibold whitespace-nowrap dark:text-white hidden sm:flex"
+            >Wiki League</span
           >
         </router-link>
         <div
@@ -34,7 +34,9 @@
         </div>
       </div>
       <div class="flex md:order-2">
-        <router-link to="/login" class="btn text-sm"> Get started </router-link>
+        <router-link to="/login" class="btn hidden md:flex py-2 px-3 text-sm">
+          Get started
+        </router-link>
         <button
           data-collapse-toggle="mobile-menu-4"
           type="button"
@@ -89,7 +91,7 @@ export default {
         { title: 'Skins', url: '/skins' },
         { title: 'About', url: '/about' },
       ],
-    }
+    };
   },
-}
+};
 </script>

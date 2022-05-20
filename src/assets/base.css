@@ -77,3 +77,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Button styles */
+.btn {
+  @apply text-white bg-[#686de0] hover:bg-[#4834d4] focus:ring-4 focus:outline-none focus:ring-[rgba(104,108,224,0.3)] font-medium rounded-lg text-center;
+}

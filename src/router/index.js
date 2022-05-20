@@ -42,6 +42,15 @@ const router = createRouter({
       component: () => import('@/views/ChampionsView.vue'),
     },
     {
+      path: '/champions/:name',
+      name: 'champion',
+      meta: {
+        title: 'Champion',
+        layout: 'main',
+      },
+      component: () => import('@/views/ChampionView.vue'),
+    },
+    {
       path: '/skins',
       name: 'skins',
       meta: {
@@ -81,7 +90,12 @@ router.beforeEach((to, _, next) => {
 
 router.afterEach((to) => {
   nextTick(() => {
-    document.title = `Aniditt | ${to.meta.title}` || 'Aniditt';
+    const champion = to.params.name;
+    if (champion) {
+      document.title = `${to.meta.title} | ${champion}` || 'Aniditt';
+    } else {
+      document.title = `Wiki League | ${to.meta.title}` || 'Aniditt';
+    }
   });
 });
 
