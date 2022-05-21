@@ -63,10 +63,19 @@ const router = createRouter({
       path: '/about',
       name: 'about',
       meta: {
-        title: 'About',
+        title: 'Privacy Policy',
         layout: 'main',
       },
       component: () => import('@/views/AboutView.vue'),
+    },
+    {
+      path: '/privacy-policy',
+      name: 'privacy-policy',
+      meta: {
+        title: 'About',
+        layout: 'main',
+      },
+      component: () => import('@/views/PrivacyPolicyView.vue'),
     },
     // {
     //   // path: '/about',
