@@ -9,7 +9,7 @@ export const useChampionStore = defineStore({
     async fetchChampions() {
       try {
         const res = await fetch(
-          'http://ddragon.leagueoflegends.com/cdn/12.9.1/data/en_US/champion.json'
+          'https://ddragon.leagueoflegends.com/cdn/12.9.1/data/en_US/champion.json'
         );
         const data = await res.json();
         this.champions = data.data;
