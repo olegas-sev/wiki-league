@@ -11,7 +11,7 @@ export default {
     onMounted(async () => {
       const champion = route.params.name;
       const res = await fetch(
-        `http://ddragon.leagueoflegends.com/cdn/12.9.1/data/en_US/champion/${champion}.json`
+        `https://ddragon.leagueoflegends.com/cdn/12.9.1/data/en_US/champion/${champion}.json`
       );
       let { data } = await res.json();
       // Grab 1st element from object
