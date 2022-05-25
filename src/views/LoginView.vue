@@ -74,7 +74,7 @@
   </Container>
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .invalid {
   @apply focus:ring-red-300 border-red-300 border-2 focus:border-red-100;
 }

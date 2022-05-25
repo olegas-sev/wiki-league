@@ -86,6 +86,10 @@ const router = createRouter({
     //   // component: () => import('../views/AboutView.vue')
     // },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    // scrolls to top of page
+    return { top: 0 };
+  },
 });
 
 router.beforeEach((to, _, next) => {

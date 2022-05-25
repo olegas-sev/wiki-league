@@ -4,7 +4,7 @@
   </component>
 </template>
 
-<style>
+<style lang="postcss">
 .heading {
   @apply text-3xl font-semibold;
 }

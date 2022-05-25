@@ -146,7 +146,7 @@ export default {
         <h1 class="subheading py-2">No champions were found</h1>
       </div>
       <div v-else class="championsContainer">
-        <div v-for="c in filtered" v-bind:key="c.id" class="mb-2">
+        <div v-for="c in filtered" v-bind:key="c.id" class="mb-2" v-motion-fade>
           <div class="flex items-center mb-2 space-x-4">
             <h5 class="subheading">{{ c.name }}</h5>
             <div>
@@ -183,7 +183,7 @@ export default {
   </Container>
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 button {
   @apply transition ease-in-out;
 }

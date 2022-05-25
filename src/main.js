@@ -1,14 +1,16 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
 // Dependencies
-import router from './router'
-import { createPinia } from 'pinia'
-// Tailwind
-import '@/assets/base.css'
+import router from './router';
+import { createPinia } from 'pinia';
+import { MotionPlugin } from '@vueuse/motion';
+// CSS, Tailwind
+import '@/assets/base.css';
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.use(createPinia())
-app.use(router)
+app.use(MotionPlugin);
+app.use(createPinia());
+app.use(router);
 
-app.mount('#app')
+app.mount('#app');

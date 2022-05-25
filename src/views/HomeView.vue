@@ -13,7 +13,7 @@ export default {
 <template>
   <div class="container mx-auto px-4">
     <div class="max-w-full mx-auto">
-      <section class="flex items-center min-h-screen">
+      <section class="flex items-center min-h-screen" v-motion-fade>
         <div>
           <div
             class="flex flex-col sm:grid grid-cols-10 gap-5 sm:items-center mb-40"

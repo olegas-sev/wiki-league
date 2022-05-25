@@ -163,7 +163,7 @@ export default {
   </Container>
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 h2 {
   @apply text-xl;
 }
