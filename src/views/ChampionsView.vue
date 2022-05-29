@@ -4,6 +4,7 @@ import Loader from '@/components/app/Loader.vue';
 import { useChampionStore } from '../stores/champion';
 import { storeToRefs } from 'pinia';
 import { computed, onMounted, ref } from '@vue/runtime-core';
+import { ViewGridIcon } from '@heroicons/vue/outline';
 
 export default {
   setup() {
@@ -13,6 +14,7 @@ export default {
     const currentTag = ref();
     const loading = ref(true);
     const championSearch = ref();
+    const grid = ref(false);
 
     onMounted(async () => {
       await fetchChampions();
@@ -57,6 +59,7 @@ export default {
       filtered,
       currentTag,
       setCurrentTag,
+      grid,
       loading,
       championSearch,
     };
@@ -94,6 +97,7 @@ export default {
   components: {
     Container,
     Loader,
+    ViewGridIcon,
   },
 };
 </script>
@@ -101,8 +105,10 @@ export default {
 <template>
   <Container class="py-20">
     <h1 class="heading mb-2">Champions</h1>
-    <div class="flex justify-between">
-      <div>
+    <div
+      class="flex flex-col space-y-2 sm:space-y-0 sm:flex-row sm:justify-between"
+    >
+      <div class="flex items-center">
         <button
           v-for="tag in tags"
           v-bind:key="tag.id"
@@ -116,8 +122,15 @@ export default {
           {{ tag.name }}
         </button>
       </div>
-      <div>
-        <div class="flex justify-center">
+      <div class="flex items-center">
+        <div class="flex sm:justify-center sm:space-x-2">
+          <div class="hidden sm:flex justify-center items-center">
+            <ViewGridIcon
+              @click="() => (grid = !grid)"
+              class="h-6 w-6 cursor-pointer"
+              :class="{ 'fill-black': grid }"
+            />
+          </div>
           <div class="xl:w-96">
             <div
               class="input-group relative flex flex-wrap items-stretch w-full rounded"
@@ -145,8 +158,17 @@ export default {
       <div v-else-if="filtered.length == 0">
         <h1 class="subheading py-2">No champions were found</h1>
       </div>
-      <div v-else class="championsContainer">
-        <div v-for="c in filtered" v-bind:key="c.id" class="mb-2" v-motion-fade>
+      <div
+        v-else
+        class="championsContainer"
+        :class="{ 'champions-grid': grid }"
+      >
+        <div
+          v-for="c in filtered"
+          v-bind:key="c.id"
+          class="mb-2 col-span-1"
+          v-motion-fade
+        >
           <div class="flex items-center mb-2 space-x-4">
             <h5 class="subheading">{{ c.name }}</h5>
             <div>
@@ -186,5 +208,9 @@ export default {
 <style lang="postcss" scoped>
 button {
   @apply transition ease-in-out;
+}
+
+.champions-grid {
+  @apply grid grid-cols-2 gap-5;
 }
 </style>
