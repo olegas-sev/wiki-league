@@ -7,7 +7,6 @@ export default {
   setup() {
     const route = useRoute();
     let championData = ref();
-
     onMounted(async () => {
       const champion = route.params.name;
       const res = await fetch(
@@ -28,6 +27,7 @@ export default {
 
 <template>
   <Container class="py-20">
+
     <div class="flex justify-end">
       <button @click="$router.back()" class="btn px-5 py-1.5 mb-2">Back</button>
     </div>
@@ -36,30 +36,35 @@ export default {
         <h2 class="heading">{{ championData.name }}</h2>
         <span>{{ championData.title }}</span>
         <div>
-          <span
-            v-for="role in championData.tags"
-            :class="role.toLowerCase() + ' text-xs mr-2 px-2.5 py-0.5 rounded'"
-            v-bind:key="role"
-            >{{ role }}</span
-          >
+          <span v-for="role in championData.tags" :class="role.toLowerCase() + ' text-xs mr-2 px-2.5 py-0.5 rounded'"
+            v-bind:key="role">{{ role }}</span>
         </div>
       </div>
       <div>
-        <img
-          :src="
-            'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/' +
-            championData.image.full.split('.')[0] +
-            '_0' +
-            '.jpg'
-          "
-          :alt="championData.name"
-        />
+        <img :src="
+          'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/' +
+          championData.image.full.split('.')[0] +
+          '_0' +
+          '.jpg'
+        " :alt="championData.name" />
       </div>
-      <div>
+      <div class="mt-2">
         <h4 class="subheading">Lore</h4>
         <p class="paragraph">
           {{ championData.lore }}
         </p>
+      </div>
+      <div>
+        <h4 class="subheading">Skins</h4>
+        <div class="grid grid-cols-2">
+          <div v-for="skin in championData.skins">
+            <img
+              :src="`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championData.name + '_' + skin.num}.jpg`"
+              :alt="championData.name">
+          </div>
+        </div>
+
+
       </div>
     </div>
   </Container>
